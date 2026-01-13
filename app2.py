@@ -166,21 +166,21 @@ if prompt:
     col1, col2 = st.columns(2)
 
     with col1:
-        st.subheader("OpenAI")
+        st.subheader("GPT 5.2")
         gpt_box = st.empty()
-        gpt_box.info("생성 중...")
+        gpt_box.info("으음...")
 
     with col2:
-        st.subheader("Gemini")
+        st.subheader("Gemini 3.0")
         gem_box = st.empty()
-        gem_box.info("생성 중...")
+        gem_box.info("으음...")
 
     start_ts = time.time()
 
     with ThreadPoolExecutor(max_workers=2) as ex:
         futures = {
-            ex.submit(ask_openai_responses, prompt): ("OpenAI", gpt_box),
-            ex.submit(ask_gemini, prompt): ("Gemini", gem_box),
+            ex.submit(ask_openai_responses, prompt): ("GPT 5.2", gpt_box),
+            ex.submit(ask_gemini, prompt): ("Gemini 3.0", gem_box),
         }
 
         done = set()
@@ -205,4 +205,5 @@ if prompt:
             for f, (name, box) in futures.items():
                 if f not in done:
                     box.error(f"{name} 시간 초과 ({OVERALL_TIMEOUT_SECONDS}s)")
+
                     box.write(f"[{name} ERROR] Timeout")
