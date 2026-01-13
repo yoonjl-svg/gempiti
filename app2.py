@@ -142,7 +142,7 @@ def ask_gemini(prompt: str) -> str:
 # ---------------------------
 # UI
 # ---------------------------
-prompt = st.chat_input("질문을 입력하세요...")
+prompt = st.chat_input("질문을 입력하세요.")
 
 if prompt:
     prompt = prompt.strip()
@@ -207,3 +207,4 @@ if prompt:
                     box.error(f"{name} 시간 초과 ({OVERALL_TIMEOUT_SECONDS}s)")
 
                     box.write(f"[{name} ERROR] Timeout")
+
